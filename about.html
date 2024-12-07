@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Farukat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: black;
+      color: yellow;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      z-index: 1000;
+      position: fixed;
+      top: 0;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: yellow;
+    }
+    .burger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background: yellow;
+      margin: 4px 0;
+    }
+    .burger-menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+    .burger-menu.active {
+      display: flex;
+    }
+    .burger-menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .burger-menu a:hover {
+      background: yellow;
+      color: black;
+    }
+
+    /* Main Content */
+    .about-section {
+      padding: 2rem 1rem;
+      margin-top: 70px;
+      text-align: center;
+    }
+    .about-section h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: yellow;
+    }
+    .about-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 1.5rem;
+    }
+    .about-section img {
+      width: 80%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin: 1rem 0;
+      box-shadow: 0 4px 10px rgba(255, 255, 0, 0.5);
+    }
+
+    .highlight {
+      color: yellow;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: black;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-section img {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Farukat</div>
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="burger-menu" id="burger-menu">
+      <a href="index.html">Home</a>
+      <a href="index.html">Projects</a>
+      <a href="about.html" style="background-color: yellow; color: black;">About</a>
+      <a href="kuiz.html">Quiz</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <h1>About Us</h1>
+    <p>Për ne <span class="highlight">Farukat</span> sfidat janë ato që na forcojnë, duke na kalitur shpirtin dhe mendjen, por është vullneti dhe dëshira ato që na shtyjnë përpara. Edhe kur kushtet dhe gjithçka dukej kundër nesh, dëshira jonë për të krijuar, për të treguar histori, për të bërë filma, nuk na ka munguar kurrë. Është kjo zjarr i brendshëm që na udhëheq, duke na bërë të kapërcejmë çdo pengesë dhe të besojmë se arti gjithmonë gjen një rrugë për të shkëlqyer.</p>
+    <img src="images/altini.jpg" alt="Two people collaborating">
+    <p>Që nga shkrimi i skenarit, te regjia, aktrimi dhe montazhi, çdo hap i procesit realizohet nga dyshja jonë. Me besim dhe bashkëpunim, ne e sjellim në jetë vizionin tonë unik, duke dëshmuar se një <span class="highlight"> film i madh</span> nuk ka nevojë për një buxhet të madh mjaftojnë <span class="highlight">idetë e mëdha.</span></p>
+    <p>"Andaj, për më shumë se 5 vite kemi arritur të sjellim tema dhe projekte të ndryshme, duke i bërë ato vite të jenë vitet e arta të jetës sonë. <br><span class="highlight">  Me shpresën dhe pasionin </span>që na kanë udhëhequr gjithmonë, besojmë se do të takohemi <span class="highlight"> përsëri</span> në filmin tonë të radhës.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2024 Farukat. All rights reserved.
+  </footer>
+
+  <script>
+    // Burger Menu
+    const burger = document.getElementById('burger');
+    const burgerMenu = document.getElementById('burger-menu');
+    burger.addEventListener('click', () => {
+      burgerMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farukat - Modern Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: black;
+      color: yellow;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      z-index: 1000;
+      position: fixed;
+      top: 0;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: yellow;
+    }
+    .burger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background: yellow;
+      margin: 4px 0;
+    }
+    .burger-menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+    .burger-menu.active {
+      display: flex;
+    }
+    .burger-menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .burger-menu a:hover {
+      background: yellow;
+      color: black;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      margin-top: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+      z-index: 1;
+    }
+    .hero-content {
+      position: absolute;
+      text-align: center;
+      padding: 1rem;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      color: yellow;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .hero a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      background: yellow;
+      color: black;
+      font-weight: bold;
+      border-radius: 5px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    /* Video Section */
+    .section {
+      padding: 1rem 0;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: yellow;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+    .video-thumbnail {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #222;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .video-thumbnail img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .video-thumbnail:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgb(255, 255, 0);
+    }
+    .video-thumbnail .info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem;
+      background: rgba(0, 0, 0, 0.8);
+      color: yellow;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .hero p {
+        font-size: 0.8rem;
+      }
+      .hero a {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: black;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Farukat</div>
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="burger-menu" id="burger-menu">
+      <a href="#" style="background-color: yellow; color: black;">Home</a>
+      <a href="#videos">Projects</a>
+      <a href="about.html">About</a>
+      <a href="kuiz.html">Quiz</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <img src="special/home.jpg" alt="Hero Image">
+    <div class="hero-content">
+      <h1 id="hero-title">Welcome to Farukat</h1>
+      <p id="hero-subtitle">Explore the latest videos</p>
+      <a id="hero-play-button" href="#videos">Watch Now</a>
+    </div>
+  </section>
+
+  <!-- Latest Videos Section -->
+  <section class="section latest-videos" id="videos">
+    <h2>Të fundit</h2>
+    <div class="video-grid">
+      <a href="dardiladi.html" class="video-thumbnail">
+        <img src="dardiladi/familja.webp" alt="Video 1">
+        <div class="info">Dardi&Ladi:Familja</div>
+      </a>
+      <a href="detektivi.html" class="video-thumbnail">
+        <img src="detektivi/sekret.jpg" alt="Video 2">
+        <div class="info">Detektivi:Misioni Sekret</div>
+      </a>
+      <a href="mahalla.html" class="video-thumbnail">
+        <img src="mahallakuqe/EP2S2.jpg" alt="Video 3">
+        <div class="info">Mahalla Kuqe:Episodi Fundit</div>
+      </a>
+      <a href="skeqe.html" class="video-thumbnail">
+        <img src="skeqe/qorri.jpg" alt="Video 4">
+        <div class="info">Qorri me sy-Intervist me Selajdinin</div>
+      </a>
+    </div>
+  </section>
+  <section class="section latest-videos" id="videos">
+    <h2>Seriale</h2>
+    <div class="video-grid">
+      <a href="dardiladi.html" class="video-thumbnail">
+        <img src="images/dardiladi.jpg"  style="object-fit: cover; object-position: 50% 10%;" alt="Video 1">
+        <div class="info">Dardi&Ladi</div>
+      </a>
+      <a href="mahalla.html" class="video-thumbnail">
+        <img src="images/mahalla.jpg" style="object-fit: cover; object-position: 50% 10%;" alt="Video 2">
+        <div class="info">Mahalla Kuqe</div>
+      </a>
+      <a href="tradhtare.html" class="video-thumbnail">
+        <img src="images/tradhtare.jpg" style="object-fit: cover; object-position: 50% 10%;" alt="Video 2">
+        <div class="info">Tradhtarë</div>
+    </a>
+      <a href="mangupat.html" class="video-thumbnail">
+        <img src="images/3mangupat.jpg"  style="object-fit: cover; object-position: 10% 69%;"alt="Video 3">
+        <div class="info">3 Mangupat</div>
+      </a>
+      <a href="toolate.html" class="video-thumbnail">
+        <img src="images/toolate.jpg"  style="object-fit: cover; object-position: 50% 60%;"alt="Video 4">
+        <div class="info">Too late</div>
+      </a>
+      <a href="theheaters.html" class="video-thumbnail">
+        <img src="images/heaters.jpg"style="object-fit: cover; object-position: 50% 10%;" alt="Video 4">
+        <div class="info">The Heaters</div>
+      </a>
+    <a href="gametest.html" class="video-thumbnail">
+      <img src="images/gametest.jpg"style="object-fit: cover; object-position: 50% 10%;" alt="Video 4">
+      <div class="info">Game Test</div>
+    </a>
+      <a href="pse.html" class="video-thumbnail">
+        <img src="images/pse.jpg" alt="Video 3">
+        <div class="info">Pse ?</div>
+      </a>
+      <a href="johnny.html" class="video-thumbnail">
+        <img src="images/johnny.jpg" alt="Video 4">
+        <div class="info">Johnny:Life Style</div>
+      </a>
+      <a href="endrra.html" class="video-thumbnail">
+        <img src="images/40endrra.jpg" alt="Video 4">
+        <div class="info">40 Enderra</div>
+      </a>
+    </div>
+  </section>
+   <!-- Latest Videos Section -->
+   <section class="section latest-videos" id="videos">
+    <h2>Filma</h2>
+    <div class="video-grid">
+      <a href="aksion.html" class="video-thumbnail">
+        <img src="images/aksion.jpg"style="object-fit: cover; object-position: 50% 40%;"  alt="Video 1">
+        <div class="info">Aksion</div>
+      </a>
+      <a href="horror.html" class="video-thumbnail">
+        <img src="images/Horror.jpg"style="object-fit: cover; object-position: 30% 90%;"   alt="Video 2">
+        <div class="info">Horror</div>
+      </a>
+      <a href="babaramiz.html" class="video-thumbnail">
+        <img src="images/botameshkujve.jpg" alt="Video 3">
+        <div class="info">Baba Ramiz</div>
+      </a>
+      <a href="detektivi.html" class="video-thumbnail">
+        <img src="images/detektivi.jpg" alt="Video 3">
+        <div class="info">Detektivi</div>
+      </a>
+      <a href="doublep.html" class="video-thumbnail">
+        <img src="images/doublep.jpg" style="object-fit: cover; object-position: 30% 20%;"alt="Video 3">
+        <div class="info">Double P</div>
+      </a>
+  </section>
+  <!-- Latest Videos Section -->
+  <section class="section latest-videos" id="videos">
+    <h2>Speciale</h2>
+    <div class="video-grid">
+      <a href="kenge.html" class="video-thumbnail">
+        <img src="images/Picsart_24-11-18_17-36-46-169.jpg"style="object-fit: cover; object-position: 50% 10%;"  alt="Video 1">
+        <div class="info">Këngë</div>
+      </a>
+      <a href="prapaskenat.html" class="video-thumbnail">
+        <img src="images/prapaskena.jpg"style="object-fit: cover; object-position: 30% 47%;"   alt="Video 2">
+        <div class="info">Prapaskenat</div>
+      </a>
+      <a href="skeqe.html" class="video-thumbnail">
+        <img src="images/skeqe.jpg" alt="Video 3">
+        <div class="info">Skeqe</div>
+      </a>
+      <a href="deleted.html" class="video-thumbnail">
+        <img src="special/deletedscenes.jpg" alt="Video 3">
+        <div class="info">Deleted Scenes</div>
+      </a>
+      <a href="trailers.html" class="video-thumbnail">
+        <img src="images/Picsart_24-11-18_17-38-02-110.jpg" alt="Video 3">
+        <div class="info">Trailers</div>
+      </a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2024 Farukat. All rights reserved.
+  </footer>
+
+  <script>
+    // Burger Menu
+    const burger = document.getElementById('burger');
+    const burgerMenu = document.getElementById('burger-menu');
+    burger.addEventListener('click', () => {
+      burgerMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    background-color: #121212;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  header {
+    background-color: #1e1e1e;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .navbar h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #ffdd57;
+  }
+  
+  .search-box input {
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 60%;
+    margin-top: 10px;
+    border: 2px solid #ffdd57;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .search-box input:focus {
+    border-color: #ff8900;
+  }
+  
+  .mode-toggle button {
+    background: none;
+    border: none;
+    color: #ffdd57;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .mode-toggle button:hover {
+    color: #ff8900;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Video List */
+  .video-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .video-item {
+    position: relative;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .video-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .video-thumbnail img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    transition: transform 0.3s ease;
+  }
+  
+  .video-item h3 {
+    font-size: 1.2rem;
+    color: #ffdd57;
+    margin: 10px;
+  }
+  
+  .video-item p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin: 0 10px 10px;
+  }
+  
+  /* Light/Dark Mode */
+  body.dark-mode {
+    background-color: #121212;
+  }
+  
+  body.dark-mode header,
+  body.dark-mode footer {
+    background-color: #1e1e1e;
+  }
+  
+  body.dark-mode .navbar h1 {
+    color: #ffdd57;
+  }
+  
+  body.dark-mode .search-box input {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  body.dark-mode .mode-toggle button {
+    color: #ffdd57;
+  }
+  
+  body.dark-mode .video-item {
+    background-color: #2a2a2a;
+  }
+  
+  body.dark-mode .video-item img {
+    filter: brightness(0.8);
+  }
+  
+  body.dark-mode .video-item h3 {
+    color: #ffdd57;
+  }
+  
+  body.light-mode {
+    background-color: #ffffff;
+    color: #333;
+  }
+  
+  body.light-mode header,
+  body.light-mode footer {
+    background-color: #f1f1f1;
+  }
+  
+  body.light-mode .navbar h1 {
+    color: #ff8900;
+  }
+  
+  body.light-mode .search-box input {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  body.light-mode .mode-toggle button {
+    color: #ff8900;
+  }
+  
+  body.light-mode .video-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+  }
+  
+  body.light-mode .video-item img {
+    filter: brightness(1);
+  }
+  
+  body.light-mode .video-item h3 {
+    color: #ff8900;
+  }
+  
+ /* Modal for video playback */
+#video-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+  z-index: 3000; /* Ensure it is above all other elements */
+  overflow: hidden;
+}
+
+/* When modal is open */
+#video-modal.open {
+  display: flex; /* Flexbox for centering content */
+}
+
+/* Video container */
+#video-container {
+  width: 90%;
+  max-width: 800px; /* Restrict to a reasonable maximum width */
+  max-height: 80vh; /* Prevent video from exceeding viewport height */
+  background-color: black; /* Video container background */
+  border-radius: 10px; /* Rounded edges for better aesthetics */
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
+}
+
+/* Iframe (YouTube video) styling */
+#video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove iframe border */
+}
+
+/* Close button */
+#close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 3100; /* Ensure it is above the modal content */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  #video-container {
+    width: 95%; /* Adjust width for tablets */
+    max-height: 70vh; /* Slightly reduce height */
+  }
+
+  #close-modal {
+    font-size: 1.2rem; /* Adjust close button size */
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #video-container {
+    width: 100%; /* Full width for smaller devices */
+    max-height: 60vh; /* Reduce height further */
+  }
+
+  #close-modal {
+    font-size: 1rem; /* Further adjust close button size */
+    padding: 5px;
+  }
+}
+
+  
+  /* Mobile Responsiveness */
+  @media screen and (max-width: 768px) {
+    #video-container {
+      max-height: 60vh;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #video-container {
+      max-height: 50vh;
+    }
+  }
+  /* Search box styles */
+.search-box {
+    margin-top: 10px;
+  }
+  
+  .search-box input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 80%; /* Make it more suitable for mobile screens */
+    margin-top: 10px;
+    border: 2px solid #ffdd57;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+    transition: width 0.3s ease;
+  }
+  
+  .search-box input:focus {
+    border-color: #ff8900;
+    width: 90%; /* Increase size when focused */
+  }
+  
+  @media screen and (max-width: 480px) {
+    .search-box input {
+      width: 90%; /* Ensure the search bar is large enough on small screens */
+    }
+  }/* Container for the search bar and sort filter */
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Position the search bar at the top */
+  .search-box {
+    margin-bottom: 10px; /* Add space between search bar and filter */
+  }
+  
+  /* Style the sort filter dropdown */
+  .sort-box {
+    margin-bottom: 10px; /* Add space between filter and mode toggle button */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* Adjust the dropdown */
+  .sort-box select {
+    padding: 10px;
+    color: white;
+    background-color: #333;
+    border: 1px solid #ffdd57;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 150px; /* Optional: Adjust the width of the dropdown */
+  }
+  
+  /* Dark mode style for sort dropdown */
+  body.dark-mode .sort-box select {
+    background-color: #ffffff;
+    color: #444;
+    border: 1px solid #ffdd57;
+  }
+  
+  body.dark-mode .sort-box select:focus {
+    border-color: rgb(255, 132, 0);
+  }
+  
+    /* Loading Screen */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+      visibility: visible;
+    }
+    #loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    #loading-screen .spinner {
+      border: 6px solid yellow;
+      border-top: 6px solid black;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
